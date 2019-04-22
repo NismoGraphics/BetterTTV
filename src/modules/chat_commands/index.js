@@ -27,7 +27,8 @@ const CommandHelp = {
     t: 'Usage "/t <login> [duration] [reason]" - Shortcut for /timeout',
     u: 'Usage "/u <login>" - Shortcut for /unban',
     uptime: 'Usage "/uptime" - Retrieves the amount of time the channel has been live',
-    viewers: 'Usage "/viewers" - Retrieves the number of viewers watching the channel'
+    viewers: 'Usage "/viewers" - Retrieves the number of viewers watching the channel',
+    afk: 'Usage "/afk" - Tells everyone you are afk or back!'
 };
 
 function secondsToLength(s) {
@@ -108,6 +109,8 @@ function massUnban() {
     getBannedChatters();
 }
 
+const afk = false;
+
 function handleCommands(message) {
     const messageParts = message.trim().split(' ');
 
@@ -168,6 +171,10 @@ function handleCommands(message) {
             return 'notsquishY WHEN YOU NEED HIM notsquishY IN A JIFFY notsquishY USE THIS EMOTE notsquishY TO SUMMON SQUISHY notsquishY';
 
         // misc
+        case 'afk':
+            afk = !afk
+            if (afk == true) { return `${messageParts.join(' ')} AFK`; } else { return `${messageParts.join(' ')} Back`; };
+            break;
         case 'join':
         case 'part':
             command === 'join' ? anonChat.join() : anonChat.part();
