@@ -173,7 +173,8 @@ function handleCommands(message) {
         // misc
         case 'afk':
             afk = !afk
-            if (afk == true) { return `${messageParts.join(' ')} AFK`; } else { return `${messageParts.join(' ')} Back`; };
+            //if (afk == true) { return `${messageParts.join(' ')} AFK`; } else { return `${messageParts.join(' ')} Back`; };
+            afk === true ? return `${messageParts.join(' ')} AFK`; : return `${messageParts.join(' ')} Back`;
             break;
         case 'join':
         case 'part':
